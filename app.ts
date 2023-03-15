@@ -1,11 +1,13 @@
-const form = document.getElementById("form");
-const password1Elem = document.getElementById("password1");
-const password2Elem = document.getElementById("password2");
-const messageContainer = document.querySelector(".message-container");
-const message = document.getElementById("message");
+const form = document.getElementById("form") as HTMLFormElement;
+const password1Elem = document.getElementById("password1") as HTMLInputElement;
+const password2Elem = document.getElementById("password2") as HTMLInputElement;
+const messageContainer = document.querySelector(
+  ".message-container"
+) as HTMLElement;
+const message = document.getElementById("message") as HTMLElement;
 
-let isValid = false;
-let passwordMatch = false;
+let isValid: boolean = false;
+let passwordMatch: boolean = false;
 
 function validateForm() {
   // Using Contraint API - returns true if all inputs are valid
@@ -40,9 +42,16 @@ function validateForm() {
   }
 }
 
+interface User {
+  name: HTMLFormElement;
+  phone: HTMLFormElement;
+  email: HTMLFormElement;
+  website: HTMLFormElement;
+  password: HTMLFormElement;
+}
 function storeFormData() {
-  const user = {
-    name: form.name.value,
+  const user: User = {
+    name: form.fullname.value,
     phone: form.phone.value,
     email: form.email.value,
     website: form.website.value,
@@ -51,7 +60,7 @@ function storeFormData() {
   //   console.log(user);
 }
 
-function processFormData(e) {
+function processFormData(e: any) {
   e.preventDefault();
 
   //   Validate form
